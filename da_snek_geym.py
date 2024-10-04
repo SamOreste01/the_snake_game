@@ -113,3 +113,7 @@ def check_collisions(snake):
         if x == body_part[0] and y == body_part[1]:
             print("GAME OVER:(")
             return True
+
+def game_over():
+    canvas.delete(ALL)
+    canvas.create_text(canvas.winfo_width()/2, canvas.winfo_height()/2, font=('consolas', 70), text="GEYM UBER:(", fill="red", tag="gameover")
