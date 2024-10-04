@@ -98,3 +98,18 @@ def change_direction(new_direction):
     elif new_direction == 'down':
         if direction != 'up':
             direction = new_direction
+
+def check_collisions(snake):
+    x, y = snake.coordinates[0]
+
+    if x < 0 or x >= GAME_WIDTH:
+        print("GAME OVER:(")
+        return True
+    elif  y < 0 or y >= GAME_HEIGHT:
+        print("GAME OVER:(")
+        return True
+
+    for body_part in snake.coordinates[1:]:
+        if x == body_part[0] and y == body_part[1]:
+            print("GAME OVER:(")
+            return True
