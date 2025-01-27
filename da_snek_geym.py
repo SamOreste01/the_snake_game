@@ -115,8 +115,10 @@ def check_collisions(snake):
             return True
 
 def game_over():
-    canvas.delete(ALL)
-    canvas.create_text(canvas.winfo_width()/2, canvas.winfo_height()/2, font=('consolas', 70), text="GEYM UBER:(", fill="red", tag="gameover")
+    canvas.delete(ALL) #Clears the screen for the game over screen
+    canvas.create_text(canvas.winfo_width()/2, canvas.winfo_height()/2 - 50, font=('consolas', 70), text="GEYM UBER:(", fill="red", tag="gameover") #Displays the game over screen
+    canvas.create_text(canvas.winfo_width()/2, canvas.winfo_height()/2 + 20, font=('consolas', 30), text="Pley Ageyn?", fill="yellow", tag="playagain") #Displays the play again below the game over
+    canvas.tag_bind("playagain", "<Button-1>", restart_game)  #Will call the def restart_game when clicked using left mouse button
 
 window = Tk()
 window.title('Snek geym')
