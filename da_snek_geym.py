@@ -120,6 +120,20 @@ def game_over():
     canvas.create_text(canvas.winfo_width()/2, canvas.winfo_height()/2 + 20, font=('consolas', 30), text="Pley Ageyn?", fill="yellow", tag="playagain") #Displays the play again below the game over
     canvas.tag_bind("playagain", "<Button-1>", restart_game)  #Will call the def restart_game when clicked using left mouse button
 
+def restart_game(event=None):
+    global snake, food, score, direction
+    score = 0  #Reset the score
+    direction = 'down'  #Reset the snake's initial movement direction
+    label.config(text="Score:{}".format(score))  # Update the score
+
+    canvas.delete(ALL) #Clears the game over screen
+
+    #Resets the snake and food objects
+    snake = Snake()  #Create a new snake
+    food = Food()  #Create a new food
+
+    next_turn(snake, food) #Restart the game loop by calling `next_turn`
+
 window = Tk()
 window.title('Snek geym')
 window.resizable(False, False)
